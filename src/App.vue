@@ -1,29 +1,31 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+    <img src="@/assets/logo.png" class="vue-logo">
+    <div id="nav" >
+      <router-link to="/">Home</router-link> | 
+      <a v-if="!authenticated" @click.prevent="showLoginForm = true" href="#">Login</a> 
     </div>
+    <utility-modal v-if="showLoginForm && !authenticated" @close="showLoginForm = false">
+        <h5 slot="header" class="modal-title">Login</h5>
+        <login-form slot="body"></login-form>
+    </utility-modal>
     <router-view/>
   </div>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-#nav {
-  padding: 30px;
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-    &.router-link-exact-active {
-      color: #42b983;
+<script>
+    require('./sass/base.scss');
+    export default{
+        data(){
+            return{
+                showLoginForm:false
+            }
+        },
+        computed:{
+            authenticated(){
+                return this.$store.state.authenticated;
+            }
+        }
     }
-  }
-}
-</style>
+</script>
+
