@@ -16,6 +16,12 @@
 <script>
     require('./sass/base.scss');
     export default{
+        beforeCreate(){
+            //this.$store.commit('loadApp');
+            if (localStorage.getItem('api_token') != null) {
+                this.$store.commit('checkAuth');
+            }
+        },
         data(){
             return{
                 showLoginForm:false

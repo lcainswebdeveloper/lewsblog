@@ -30,5 +30,11 @@ export default new Vuex.Store({
             localStorage.setItem('api_token', data.response.token);
             localStorage.setItem('user_id', data.response.id);
         },
+        checkAuth(state){
+            Flash.warning("API Token found. Verifying ....");
+            state.authenticating = true;
+            console.log(localStorage.getItem('user_id'));
+            console.log(localStorage.getItem('api_token'));
+        }
 	}
 });
