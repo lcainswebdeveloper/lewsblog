@@ -1,12 +1,16 @@
 <template>
-  <div class="home">
-    
-  </div>
+    <layout>
+
+    </layout>
 </template>
-
 <script>
-
 export default {
-  name: 'home'
+    
+    data(){
+        return{}
+    },
+    computed:{},
+    methods:{}
 }
 </script>
+

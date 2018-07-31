@@ -2,31 +2,29 @@
     <div>
         <utility-loader-dots v-if="submitting"></utility-loader-dots>
         <form v-show="!submitting" @submit.prevent="login" :action="loginUrl">
-            <div class="form-group">
-                <label>Email</label>
-                <input type="email" class="form-control" placeholder="Email" v-model="email">
-            </div>
-            <div class="form-group">
-                <label>Password</label>
-                <input type="password" class="form-control" placeholder="Password" v-model="password">
-            </div>
+            <form-group label-title="Email" :form-errors="errors" field-name="email">
+                <form-text placeholder="Email" v-model="email" field-name="email"></form-text>
+            </form-group>
+            <form-group label-title="Password" :form-errors="errors" field-name="password">
+                <form-text type="password" placeholder="Password" v-model="password" field-name="password"></form-text>
+            </form-group>
             <button class="btn btn-info">Login</button>
         </form>
     </div>
 </template>
 
 <script>
+import Errors from './../../classes/errors';
 export default{
         name:"LoginForm",
-        mounted(){
-        },
         data(){
             return{
                 user:{},
-                email:"lewis@lcainswebdeveloper.co.uk",
-                password:"123456",
+                email:"",
+                password:"",
                 submitting:false,
-                loginUrl:"http://blogapi.test/api/user/login"
+                loginUrl:"user/login",
+                errors:new Errors()
             }
         },
         methods:{
@@ -43,11 +41,18 @@ export default{
                             response:response.data
                         });
                         this.user = response.data;
-                        //this.$router.push('/admin');
                         this.submitting = false;
                     })
                     .catch(error => {
-                        Flash.error("Login Failed. Please try again");
+                        if(error.response.data){
+                            if(error.response.status == 422){
+                                this.errors.record(error.response.data);
+                            }else{
+                                Flash.error(error.response.data);
+                            }
+                        }else{
+                            Flash.error("Login Failed. Please try again");
+                        }
                         this.submitting = false;
                     });
                 }

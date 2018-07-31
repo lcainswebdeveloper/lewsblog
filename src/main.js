@@ -2,7 +2,9 @@ import _ from 'lodash';
 import $ from 'jquery';
 window._ = _;
 window.$ = $;
-window.axios = require('axios');
+import axios from 'axios'; 
+axios.defaults.baseURL = 'http://blogapi.test/api/';
+window.axios = axios;
 import Flash from './tools/Flash';
 window.Flash = Flash;
 
