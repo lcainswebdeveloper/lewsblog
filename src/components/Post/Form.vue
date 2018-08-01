@@ -8,6 +8,13 @@
             <form-group label-title="Content" :form-errors="errors" field-name="content">
                 <form-textarea placeholder="Content" v-model="content" field-name="content"></form-textarea>
             </form-group>
+            <form-group label-title="Categories" :form-errors="errors" field-name="categories">
+                <div class="row">
+                    <div v-for="category in categoryList" class="col-xs-6">
+                        <input type="checkbox" v-model="categories" :value="category.id" :id="'category-' + category.id"> <label :for="'category-' + category.id"> {{category.title}}</label>
+                    </div>
+                </div>
+            </form-group>
             <button class="btn btn-info">Save</button>
         </form>
     </div>
@@ -21,9 +28,15 @@ export default{
             return{
                 title:"",
                 content:"",
+                categories:[],
                 submitting:false,
                 formUrl:"blog-post/create",
                 errors:new Errors()
+            }
+        },
+        computed:{
+            categoryList(){
+                return this.$store.getters.orderedCategories;
             }
         },
         methods:{
@@ -33,12 +46,14 @@ export default{
                     this.submitting = true;
                     axios.post(this.formUrl, {
                         "title":this.title,
+                        "content":this.content,
+                        "categories":this.categories,
                         "api_token":this.$store.state.authToken
                     })
                     .then(response => {
                         Flash.success(response.data.title + ' was added successfully');
                         this.$store.commit('pushTo', {
-                            key: 'categories',
+                            key: 'posts',
                             value: response.data
                         });
                         this.$emit('close');

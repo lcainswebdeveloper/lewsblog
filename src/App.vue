@@ -19,10 +19,24 @@
     require('./sass/base.scss');
     export default{
         beforeCreate(){
-            //this.$store.commit('loadApp');
             if (localStorage.getItem('api_token') != null) {
                 this.$store.commit('checkAuth');
             }
+            axios.get('/posts/categories')
+            .then(response => {
+                this.$store.commit('setItem', {
+                    key: 'categories',
+                    value: response.data
+                });
+            })
+
+            axios.get('/posts/blog-posts')
+            .then(response => {
+                this.$store.commit('setItem', {
+                    key: 'posts',
+                    value: response.data
+                });
+            })
         },
         methods:{
             logout(){
@@ -45,18 +59,7 @@
             }
         },
         mounted(){
-            axios.get('/posts/categories')
-            .then(response => {
-                this.$store.commit('setItem', {
-                    key: 'categories',
-                    value: response.data
-                });
-            })
-
-            axios.get('/posts/blog-posts')
-            .then(response => {
-                console.log(response.data);
-            })
+            
         },
     }
 </script>

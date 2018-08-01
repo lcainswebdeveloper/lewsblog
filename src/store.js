@@ -12,11 +12,15 @@ export default new Vuex.Store({
         appReady: false,
         authToken: "",
         categories:[],
+        posts:[],
         activeCategory:'all'
     },
     getters:{
         orderedCategories(state){
             return _.orderBy(state.categories, ['title'], ['asc']);
+        },
+        filteredPosts(state){
+            return _.orderBy(state.posts, ['created_at'], ['desc']);
         },
         siteReponsiveMode(state){
             if (state.winWidth <= 1000 && state.winWidth > 767) return 'on-tablet';
@@ -52,8 +56,13 @@ export default new Vuex.Store({
                 state.authUser = response.data;
             })
             .catch(error => {
-                Flash.error("Login Failed. Please try again");
+                Flash.error("Login Failed. Please login again");
                 state.authenticating = false;
+                localStorage.removeItem('api_token');
+                localStorage.removeItem('user_id');
+                state.authenticated = false;
+                state.authToken = '';
+                state.authUser = {};
             });
         },
         logout(state){
