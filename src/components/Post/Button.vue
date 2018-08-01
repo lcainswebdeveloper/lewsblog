@@ -2,7 +2,10 @@
     <div>
         <utility-modal v-if="authenticated && showModal == true" @close="showModal = false">
             <h5 slot="header" class="modal-title">Add Post</h5>
+            <post-form slot="body" @close="showModal = false"></post-form>
+        
         </utility-modal>
+        
         <div v-if="authenticated" @click="showModal = true" class="btn btn-info">Add Post</div>
     </div>        
 </template>
