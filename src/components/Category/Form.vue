@@ -5,7 +5,7 @@
             <form-group label-title="Title" :form-errors="errors" field-name="title">
                 <form-text placeholder="Title" v-model="title" field-name="title"></form-text>
             </form-group>
-            <button class="btn btn-info">Save</button>
+            <button class="btn btn-info"><i class="far fa-save"></i></button>
         </form>
     </div>
 </template>
@@ -14,11 +14,30 @@
 import Errors from './../../classes/errors';
 export default{
         name:"CategoryForm",
+        props:{
+            activeRecord:{}
+        },
+        mounted(){
+            if(this.editingMode == true){
+                this.title = this.activeRecord.title;
+            }
+        },
+        computed:{
+            formUrl(){
+                if(!this.editingMode){
+                    return "category/create";
+                }else{
+                    return "category/" + this.activeRecord.id + "/update";
+                }
+            },
+            editingMode(){
+                return typeof this.activeRecord == 'object';
+            }
+        },
         data(){
             return{
                 title:"",
                 submitting:false,
-                formUrl:"category/create",
                 errors:new Errors()
             }
         },
@@ -32,11 +51,14 @@ export default{
                         "api_token":this.$store.state.authToken
                     })
                     .then(response => {
-                        Flash.success(response.data.title + ' was added successfully');
-                        this.$store.commit('pushTo', {
-                            key: 'categories',
-                            value: response.data
-                        });
+                        Flash.success(response.data.title + ' was saved successfully');
+                        if(this.editingMode == true){
+                            if(this.$route.name == 'category'){
+                                this.$router.push('/category/' + response.data.slug);
+                            }
+                        }
+                        Event.$emit('refresh-categories');
+                        Event.$emit('refresh-posts');
                         this.$emit('close');
                         this.submitting = false;
                     })

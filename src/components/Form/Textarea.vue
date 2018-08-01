@@ -1,5 +1,5 @@
 <template>
-    <textarea name="" id="" cols="30" rows="10" @input="$emit('input', $event.target.value)" class="form-control">
+    <textarea name="" id="" cols="30" rows="5" @input="$emit('input', $event.target.value)" class="form-control">
         {{value}}
     </textarea>     
 </template>

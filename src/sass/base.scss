@@ -1,5 +1,6 @@
 @import 'bootstrap-sass/assets/stylesheets/_bootstrap-sprockets.scss';
 @import 'bootstrap-sass/assets/stylesheets/_bootstrap.scss';
+$green:#64B587;
 #app {
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -8,6 +9,9 @@
     width:90%;
     max-width:700px;
     margin:auto;
+}
+h1,h2,h3,h4,h5,h6{
+    margin-top:0px;
 }
 .vue-logo{
     max-width:100px;
@@ -30,6 +34,78 @@ ul{
 .alertify-notifier {
     z-index: 10000;
 }
+a{
+    transition:color 0.3s ease;
+    &:hover{
+        color:$green;
+        text-decoration: none;
+    }
+}
+.float-right{
+    float:right;
+}
+.router-link-active{
+    font-weight:bold;
+    color:$green;
+}
+
 .blog-list{
     margin-top:30px;
+    li{
+        position: relative;
+        padding:10px 0;
+        .category-button{
+            position: absolute;
+            top: 3px;
+            right:0px;
+            display:none;
+        }
+        &:hover{
+            .category-button{
+                display:block;
+            }
+        }
+    }
+    
+}
+.blog-listing{
+    background: #f3f3f3;
+    padding: 20px;
+    margin-bottom: 10px;
+    .category-string{
+        font-style: italic;
+    }
+    .post-back{
+        display:block;
+        margin-bottom:10px;
+    }
+    .post-date-author{
+        display:block;
+        margin-bottom:5px;
+    }
+    .post-abstract, .post-content{
+        margin:20px 0 ;
+    }
+    hr {
+        border-top: 1px solid $green;
+    }
+}
+.category-link-span{
+    margin-right: 4px;
+    &:after{
+        content: '';
+        border-radius: 100px;
+        height: 3px;
+        width: 3px;
+        margin-left: 4px;
+        background-color: #000;
+        display: inline-block;
+        position: relative;
+        top: -2px;    
+    }
+    &:last-child{
+        &:after{
+            display:none;
+        }
+    }
 }
