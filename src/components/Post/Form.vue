@@ -19,6 +19,15 @@
                 </div>
             </form-group>
             <button class="btn btn-info"><i class="far fa-save"></i></button>
+            <form-delete-button 
+                @delete-start="submitting = true"
+                @delete-error="submitting = false"
+                @close="$emit('close')"
+                v-if="editingMode" 
+                :delete-url="'blog-post/' + this.activeRecord.id + '/delete'"
+            >
+            </form-delete-button>
+        
         </form>
     </div>
 </template>

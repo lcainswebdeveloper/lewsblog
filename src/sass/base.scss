@@ -34,6 +34,10 @@ ul{
 .alertify-notifier {
     z-index: 10000;
 }
+.alertify{
+    z-index: 10000;
+    position: relative;
+}
 a{
     transition:color 0.3s ease;
     &:hover{
@@ -108,4 +112,7 @@ a{
             display:none;
         }
     }
+}
+.delete-record-button{
+    margin-left: 3px;
 }

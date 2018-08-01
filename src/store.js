@@ -50,7 +50,7 @@ export default new Vuex.Store({
         loggedIn: (state, data) => {
             Flash.success("You have logged in successfully...");
             state.authenticated = true;
-            state.authToken = data.authToken;
+            state.authToken = data.response.token;
             state.authenticating = false;
             state.authUser = data.response;
             localStorage.setItem('api_token', data.response.token);
