@@ -1,11 +1,10 @@
-import ENV from './env';
 import _ from 'lodash';
 import $ from 'jquery';
 window._ = _;
 window.$ = $;
 
 import axios from 'axios'; 
-axios.defaults.baseURL = ENV.blogApiUrl;
+axios.defaults.baseURL = "http://blogapi.lcainswebdeveloper.co.uk/api/";
 window.axios = axios;
 
 import Flash from './tools/Flash';

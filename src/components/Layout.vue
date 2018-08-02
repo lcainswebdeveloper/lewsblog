@@ -27,7 +27,7 @@
                 <utility-loader-dots v-if="$store.state.refreshingPosts == true"></utility-loader-dots>
                 <div class="blog-list">
                     <small v-if="$store.getters.filteredPosts.length == 0">No Posts available in this category</small>
-                    <post-single v-if="!$store.state.refreshingPosts" :blog-post="post" v-for="post in $store.getters.filteredPosts"></post-single>
+                    <post-single v-if="!$store.state.refreshingPosts" :blog-post="post" :key="post.id" v-for="post in $store.getters.filteredPosts"></post-single>
                 </div>
             </slot>
         </div>
