@@ -1,7 +1,9 @@
 .DS_Store
 node_modules
 src/env.js
+public/index.html
 dist/.htaccess
+
 # local env files
 .env.local
 .env.*.local
