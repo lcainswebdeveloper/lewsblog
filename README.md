@@ -1,7 +1,8 @@
 # Lew's Blog
 
 - clone the https://github.com/lcainswebdeveloper/blogapi repo, follow those instructions and make sure tests are passing.
-- Save src/env.js.bak as src/env.js and amend the relevant urls as per your project.
+- clone this repo
+
 
 ## Project setup
 ```
@@ -12,6 +13,7 @@ yarn install
 ```
 yarn run serve
 ```
+- Save src/env.js.bak as src/env.js and amend the relevant urls as per your project.
 
 ### Compiles and minifies for production
 ```
