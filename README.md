@@ -1,6 +1,6 @@
 # lewsblog
 
-## Save public/index.html.bak as public/index.html and set the url to your blog api.
+- Save public/index.html.bak as public/index.html and set the url to your blog api.
 
 ## Project setup
 ```
