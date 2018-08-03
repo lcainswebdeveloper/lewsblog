@@ -1,6 +1,6 @@
 # lewsblog
 
-- Save public/index.html.bak as public/index.html and set the url to your blog api.
+- Save src/env.js.bak as src/env.js and amend the relevant urls as per your project.
 
 ## Project setup
 ```
