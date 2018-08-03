@@ -1,6 +1,7 @@
 .DS_Store
 node_modules
 src/env.js
+dist/index.html
 public/index.html
 dist/.htaccess
 
