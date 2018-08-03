@@ -4,9 +4,9 @@ window._ = _;
 window.$ = $;
 
 import axios from 'axios'; 
-axios.defaults.baseURL = "http://blog.lcainswebdeveloper.co.uk/api/";
+axios.defaults.baseURL = apiBaseUrl;
 window.axios = axios;
-
+console.log(axios.defaults);
 import Flash from './tools/Flash';
 window.Flash = Flash;
 

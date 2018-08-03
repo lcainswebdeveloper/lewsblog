@@ -7,7 +7,7 @@
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
     <title>Lewis Cains Simple Blog</title>
     <script>
-        var apiBaseUrl = 'http://blogapi.test/api/';
+        var apiBaseUrl = 'http://your-api-url/api/';
     </script>
   </head>
   <body>
