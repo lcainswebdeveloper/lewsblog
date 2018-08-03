@@ -14,7 +14,32 @@ yarn install
 yarn run serve
 ```
 - Save src/env.js.bak as src/env.js and amend the relevant urls as per your project.
+```
+src/env.js
+
+export default {
+    blogApiUrl(){
+        if(window.location.origin == 'http://dummyblog.test:8080'){
+            return 'http://your-local-blog-api-url/api/'; //ie http://dummyblogapi.test/api/
+        }else{
+            //declare your live api url
+            return 'http://your-live-blog-api-url/api/';
+        }
+    }
+}
+```
 - Save vue.config.js.bak as vue.config.js and amend the allowedHosts property to your url ie .dummyblog.test (this is needed so that we can make api calls)
+```
+vue.config.js
+
+module.exports = {
+    devServer: {
+        allowedHosts: [
+            '.dummyblog.test'
+        ]
+    }
+}
+```
 - open http://dummyblog.test:8080 in your browser (amend the port to whatever the console implies if relevant)
 
 ### Compiles and minifies for production
