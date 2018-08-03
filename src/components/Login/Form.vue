@@ -20,8 +20,8 @@ export default{
         data(){
             return{
                 user:{},
-                email:"",
-                password:"",
+                email:"test@test.co.uk",
+                password:"123456",
                 submitting:false,
                 loginUrl:"user/login",
                 errors:new Errors()
