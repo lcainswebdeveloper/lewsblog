@@ -3,7 +3,10 @@ node_modules
 src/env.js
 vue.config.js
 dist/.htaccess
-
+.cache
+.config
+.yarn
+.yarnrc
 # local env files
 .env.local
 .env.*.local
