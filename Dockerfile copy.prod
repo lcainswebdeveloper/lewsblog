@@ -1,0 +1,10 @@
+FROM nginx
+
+COPY /dist /usr/share/nginx/html
+
+COPY .docker/default.conf /etc/nginx/conf.d/
+
+#docker build -t lews-blog-nginx .
+#docker run -it -p 8089:8080 lews-blog-nginx
+#docker run -it --rm --name nginxtest3 -v ${PWD}/dist:/usr/share/nginx/html -p 8087:80 lews-blog-nginx
+#docker run -it --rm --name nginxtest4 -p 8083:80 lews-blog-nginx

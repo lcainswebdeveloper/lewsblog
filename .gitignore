@@ -2,7 +2,7 @@
 node_modules
 src/env.js
 vue.config.js
-dist/.htaccess
+dist
 .cache
 .config
 .yarn

@@ -9,14 +9,17 @@ ENV PATH /app/node_modules/.bin:$PATH
 
 # install and cache app dependencies
 #COPY package.json /app/package.json
+COPY . /home/node
+
 RUN npm install
+
 
 USER node
 # start app
 CMD ["npm", "run", "serve"]
 
 ### Build the Docker image
-#`docker build -t lews-blog-vue .`
+#`docker build -t lcainswebdeveloper/vueblog:0.2 .`
 
 ### Run the project!
-#`docker run -it -v ${PWD}:/home/node -p 8080:8080 lews-blog-vue`
+#`docker run -it -v ${PWD}:/home/node -p 8080:8080 lcainswebdeveloper/vueblog:0.2`
