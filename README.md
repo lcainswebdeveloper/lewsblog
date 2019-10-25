@@ -1,3 +1,5 @@
+[http://vueblog.lcainswebdeveloper.co.uk]
+
 # Lew's Blog
 
 - clone the https://github.com/lcainswebdeveloper/blogapi repo, follow those instructions and make sure tests are passing.
